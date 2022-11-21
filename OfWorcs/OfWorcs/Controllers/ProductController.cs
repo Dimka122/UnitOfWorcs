@@ -1,14 +1,23 @@
 ﻿using System;
+using Microsoft.AspNetCore.Mvc;
+using OfWorcs.Models.UnitOfWorks.User;
+using OfWorcs.Models;
 
-/// <summary>
-/// Summary description for Class1
-/// </summary>
-public class Class1
+namespace OfWorcs.Controllers
 {
-	public Class1()
-	{
-		//
-		// TODO: Add constructor logic here
-		//
-	}
+    [ApiController]
+    [Route("[controller]")]
+    public class ProductController : Controller
+    {
+        UserWork work;
+        public ProductController()
+        {
+            work = new UserWork();
+        }
+        [HttpGet]
+        public IEnumerable<object> GetAll() => work.UserRepo.GetAll();
+        [HttpGet("id")]
+        public object GetById(int id) => work.UserRepo.Get(id);
+    }
 }
+

@@ -1,14 +1,14 @@
 ﻿using System;
 
-/// <summary>
-/// Summary description for Class1
-/// </summary>
-public class Class1
+namespace OfWorcs.Models.UnitOfWorks.Admin
 {
-	public Class1()
-	{
-		//
-		// TODO: Add constructor logic here
-		//
-	}
+    public interface IAdminRepo<T> where T : class
+    {
+        T Get(int id);
+        IEnumerable<T> GetAll();
+        IDisposable Add(T entity);
+        IDisposable Update(T entity);
+        IDisposable Delete(T entity);
+        
+    }
 }

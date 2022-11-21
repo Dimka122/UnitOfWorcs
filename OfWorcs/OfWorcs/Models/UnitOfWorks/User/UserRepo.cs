@@ -1,14 +1,16 @@
 ﻿using System;
 
-/// <summary>
-/// Summary description for Class1
-/// </summary>
-public class Class1
+namespace OfWorcs.Models.UnitOfWorks.User
 {
-	public Class1()
-	{
-		//
-		// TODO: Add constructor logic here
-		//
-	}
+    public class UserRepo : IUserRepo<Product>
+    {
+        private ProductContext context;
+        public UserRepo(ProductContext context)
+        {
+            this.context = context;
+        }
+        public Product Get(int id) => context.Products.Find(id);
+        public IEnumerable<Product> GetAll() => context.Products;
+    }
 }
+
