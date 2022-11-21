@@ -1,14 +1,14 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore;
 
-/// <summary>
-/// Summary description for Class1
-/// </summary>
-public class Class1
+namespace OfWorcs.Models
 {
-	public Class1()
-	{
-		//
-		// TODO: Add constructor logic here
-		//
-	}
+    public class ProductContext : DbContext
+    {
+        public DbSet<Product> Products { get; set; }
+        protected override void OnConfiguring(DbContextOptionsBuilder builder)
+        {
+            builder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Database=Unitofworcs;Integrated Security=True;");
+        }
+    }
 }

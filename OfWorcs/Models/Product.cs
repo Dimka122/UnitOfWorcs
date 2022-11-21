@@ -1,14 +1,18 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
-/// <summary>
-/// Summary description for Class1
-/// </summary>
-public class Class1
+public class Product
 {
-	public Class1()
-	{
-		//
-		// TODO: Add constructor logic here
-		//
-	}
+        [Key]
+        public int Id { get; set; }
+        [Unicode]
+        [Required]
+        [MaxLength(24)]
+        public string Name { get; set; }
+        [Required]
+        public double Price { get; set; }
+
+        public override string ToString()
+            => $"[{Id}]\tName: {Name}\tPrice: {Price}";
 }

@@ -1,14 +1,11 @@
 ﻿using System;
 
-/// <summary>
-/// Summary description for Class1
-/// </summary>
-public class Class1
+namespace OfWorcs.Models.UnitOfWorks.User
 {
-	public Class1()
-	{
-		//
-		// TODO: Add constructor logic here
-		//
-	}
+    public interface IUserRepo<T> where T : class
+    {
+        T Get(int id);
+        IEnumerable<T> GetAll();
+    }
 }
+
