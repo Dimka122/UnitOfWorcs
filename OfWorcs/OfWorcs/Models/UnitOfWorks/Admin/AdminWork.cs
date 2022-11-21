@@ -1,14 +1,27 @@
 ﻿using System;
 
-/// <summary>
-/// Summary description for Class1
-/// </summary>
-public class Class1
+namespace OfWorcs.Models.UnitOfWorks.Admin
 {
-	public Class1()
-	{
-		//
-		// TODO: Add constructor logic here
-		//
-	}
+    public class AdminWork : IDisposable
+    {
+        ProductContext productContext;
+        private AdminRepo adminRepo;
+
+        public AdminRepo AdminRepo
+        {
+            get
+            {
+                if (adminRepo == null)
+                    adminRepo = new AdminRepo(productContext);
+                return adminRepo;
+            }
+        }
+
+        public AdminWork()
+        {
+            productContext = new ProductContext();
+        }
+        public void Dispose() => GC.SuppressFinalize(this);
+
+    }
 }
